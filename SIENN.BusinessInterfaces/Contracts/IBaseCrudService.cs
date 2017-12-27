@@ -4,13 +4,13 @@ using System.Text;
 
 namespace SIENN.BusinessInterfaces.Contracts
 {
-    public interface IBaseCrudService<T> where T : class
+    public interface IBaseCrudService<TEntity> where TEntity : class
     {
-        T Get(int id);
-        IEnumerable<T> GetAll();
+        TEntity Get(int id);
+        IEnumerable<TEntity> GetAll();
 
-        void Add(T entity);
-        void Update(T entity);
-        void Remove(T entity);
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Remove(TEntity entity);
     }
 }

@@ -58,11 +58,13 @@ namespace SIENN.DbAccess.Context
                 entity.HasOne(d => d.Type)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.TypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Type");
 
                 entity.HasOne(d => d.Unit)
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.UnitId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Unit");
             });
 
@@ -73,11 +75,13 @@ namespace SIENN.DbAccess.Context
                 entity.HasOne(pc => pc.Product)
                     .WithMany(p => p.ProductCategories)
                     .HasForeignKey(pc => pc.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ProductCategory_Product");
 
                 entity.HasOne(pc => pc.Category)
                     .WithMany(c => c.ProductCategories)
                     .HasForeignKey(pc => pc.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ProductCategory_Category");
             });
 

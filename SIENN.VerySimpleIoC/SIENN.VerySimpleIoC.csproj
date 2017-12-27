@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SIENN.BusinessInterfaces\SIENN.BusinessInterfaces.csproj" />
     <ProjectReference Include="..\SIENN.DbAccess\SIENN.DbAccess.csproj" />
+    <ProjectReference Include="..\SIENN.Services\SIENN.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

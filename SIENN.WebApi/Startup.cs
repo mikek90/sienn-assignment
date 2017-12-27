@@ -4,6 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.EntityFrameworkCore;
+using SIENN.DbAccess.Repositories;
+using SIENN.DbAccess.Context;
+using SIENN.BusinessInterfaces.Contracts;
+using SIENN.Services;
 
 namespace SIENN.WebApi
 {
