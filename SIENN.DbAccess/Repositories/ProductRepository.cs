@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SIENN.DbAccess.Repositories
 {
-    public class ProductRepository : GenericRepository<ProductDTO>, IProductRepository
+    public class ProductRepository : BaseRepository<ProductDTO>, IProductRepository
     {
         public ProductRepository(SiennContext context) : base(context)
         {
@@ -30,6 +30,11 @@ namespace SIENN.DbAccess.Repositories
         {
             _context.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public override void Update(ProductDTO entity)
+        {
+            throw new NotImplementedException();
         }
 
         private SiennContext _context;
