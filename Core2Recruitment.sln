@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SIENN.WebApi", "SIENN.WebAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIENN.VerySimpleIoC", "SIENN.VerySimpleIoC\SIENN.VerySimpleIoC.csproj", "{49740D01-0BF0-439E-9CF6-89821425D7D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIENN.BusinessInterfaces", "SIENN.BusinessInterfaces\SIENN.BusinessInterfaces.csproj", "{8C371AD7-D795-4BD6-83DF-6EA2A4A17317}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{49740D01-0BF0-439E-9CF6-89821425D7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49740D01-0BF0-439E-9CF6-89821425D7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49740D01-0BF0-439E-9CF6-89821425D7D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C371AD7-D795-4BD6-83DF-6EA2A4A17317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C371AD7-D795-4BD6-83DF-6EA2A4A17317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C371AD7-D795-4BD6-83DF-6EA2A4A17317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C371AD7-D795-4BD6-83DF-6EA2A4A17317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

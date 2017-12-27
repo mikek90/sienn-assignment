@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SIENN.DbAccess.DTOs
+namespace SIENN.BusinessInterfaces
 {
     public partial class CategoryDTO
     {

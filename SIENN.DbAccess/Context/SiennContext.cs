@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using SIENN.DbAccess.DTOs;
+using SIENN.BusinessInterfaces;
 
 namespace SIENN.DbAccess.Context
 {

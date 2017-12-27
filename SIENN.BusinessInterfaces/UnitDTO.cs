@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SIENN.DbAccess.DTOs
+namespace SIENN.BusinessInterfaces
 {
-    public partial class TypeDTO
+    public partial class UnitDTO
     {
-        public TypeDTO()
+        public UnitDTO()
         {
             Product = new HashSet<ProductDTO>();
         }
 
-        public int TypeId { get; set; }
+        public int UnitId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
 

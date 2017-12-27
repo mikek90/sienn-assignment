@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SIENN.BusinessInterfaces\SIENN.BusinessInterfaces.csproj" />
+  </ItemGroup>
+
 </Project>
