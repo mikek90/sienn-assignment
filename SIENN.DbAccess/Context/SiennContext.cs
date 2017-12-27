@@ -22,6 +22,8 @@ namespace SIENN.DbAccess.Context
         {
             modelBuilder.Entity<CategoryDTO>(entity =>
             {
+                entity.HasKey(e => e.CategoryId);
+
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Category__A25C5AA79081AE1B")
                     .IsUnique();
@@ -36,6 +38,8 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<ProductDTO>(entity =>
             {
+                entity.HasKey(e => e.ProductId);
+
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Product__A25C5AA7DF7E426C")
                     .IsUnique();
@@ -64,6 +68,8 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<TypeDTO>(entity =>
             {
+                entity.HasKey(e => e.TypeId);
+
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Type__A25C5AA777B9DE99")
                     .IsUnique();
@@ -78,6 +84,8 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<UnitDTO>(entity =>
             {
+                entity.HasKey(e => e.UnitId);
+
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Unit__A25C5AA7BC7EA533")
                     .IsUnique();
