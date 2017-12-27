@@ -18,6 +18,6 @@ namespace SIENN.BusinessInterfaces
         public TypeDTO Type { get; set; }
         public UnitDTO Unit { get; set; }
 
-        public IList<ProductCategoryDTO> ProductCategories { get; set; } = new List<ProductCategoryDTO>();
+        public IEnumerable<ProductCategoryDTO> ProductCategories { get; set; } //= new List<ProductCategoryDTO>();
     }
 }

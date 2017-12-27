@@ -9,6 +9,6 @@ namespace SIENN.BusinessInterfaces
         public string Code { get; set; }
         public string Description { get; set; }
 
-        public IList<ProductCategoryDTO> ProductCategories { get; set; } = new List<ProductCategoryDTO>();
+        public IEnumerable<ProductCategoryDTO> ProductCategories { get; set; } //= new List<ProductCategoryDTO>();
     }
 }
