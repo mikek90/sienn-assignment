@@ -8,5 +8,7 @@ namespace SIENN.BusinessInterfaces
         public int CategoryId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+
+        public IList<ProductCategoryDTO> ProductCategories { get; set; } = new List<ProductCategoryDTO>();
     }
 }

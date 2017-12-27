@@ -52,12 +52,12 @@ namespace SIENN.DbAccess.Context
                 entity.Property(e => e.Price).HasColumnType("decimal(19, 4)");
 
                 entity.HasOne(d => d.Type)
-                    .WithMany(p => p.Product)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.TypeId)
                     .HasConstraintName("FK_Product_Type");
 
                 entity.HasOne(d => d.Unit)
-                    .WithMany(p => p.Product)
+                    .WithMany(p => p.Products)
                     .HasForeignKey(d => d.UnitId)
                     .HasConstraintName("FK_Product_Unit");
             });
