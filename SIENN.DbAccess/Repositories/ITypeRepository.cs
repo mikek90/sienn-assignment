@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SIENN.DbAccess.Repositories
 {
-    public interface ITypeRepository : IGenericRepository<TypeDTO>
+    public interface ITypeRepository : IBaseRepository<TypeDTO>
     {
     }
 }

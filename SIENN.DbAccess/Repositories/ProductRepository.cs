@@ -11,17 +11,15 @@ namespace SIENN.DbAccess.Repositories
     public class ProductRepository : BaseRepository<ProductDTO>, IProductRepository
     {
         public ProductRepository(SiennContext context) : base(context)
-        {
-            _context = context;
-        }
+        { }
 
         public override ProductDTO Get(int id)
         {
-            var result = _context.Product
+            var result = SiennContext.Product
                 .Include(u => u.Unit)
                 .Include(t => t.Type)
                 .Include(x => x.ProductCategories)
-                .SingleOrDefault(s => s.ProductId == id);
+                .FirstOrDefault(s => s.ProductId == id);
 
             return result;
         }
@@ -30,7 +28,5 @@ namespace SIENN.DbAccess.Repositories
         {
             throw new NotImplementedException();
         }
-
-        private SiennContext _context;
     }
 }

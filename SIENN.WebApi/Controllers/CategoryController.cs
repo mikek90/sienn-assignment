@@ -9,33 +9,33 @@ using SIENN.BusinessInterfaces.Contracts;
 namespace SIENN.WebApi.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Product")]
-    public class ProductController : Controller
+    [Route("api/Category")]
+    public class CategoryController : Controller
     {
-        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
 
-        public ProductController(IProductService ProductService)
+        public CategoryController(ICategoryService CategoryService)
         {
-            _productService = ProductService;
+            _categoryService = CategoryService;
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var dto = _productService.Get(id);
+            var dto = _categoryService.Get(id);
             return Ok(dto);
         }
 
         [HttpGet("all")]
         public IActionResult GetAll()
         {
-            return Ok(_productService.GetAll());
+            return Ok(_categoryService.GetAll());
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            _productService.Remove(id);
+            _categoryService.Remove(id);
             return Ok();
         }
     }

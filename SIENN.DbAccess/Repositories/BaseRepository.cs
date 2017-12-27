@@ -20,6 +20,6 @@ namespace SIENN.DbAccess.Repositories
 
         public abstract void Update(TEntity entity);
 
-        SiennContext SiennContext;
+        protected SiennContext SiennContext;
     }
 }
