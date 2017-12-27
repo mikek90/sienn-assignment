@@ -18,22 +18,22 @@ namespace SIENN.VerySimpleIoC
 
         public void Add(TypeDTO entity)
         {
-            throw new NotImplementedException();
+            _typeRepository.Add(entity);
         }
 
         public TypeDTO Get(int id)
         {
-            throw new NotImplementedException();
+            return _typeRepository.Get(id);
         }
 
         public IEnumerable<TypeDTO> GetAll()
         {
-            throw new NotImplementedException();
+            return _typeRepository.GetAll();
         }
 
         public void Remove(TypeDTO entity)
         {
-            throw new NotImplementedException();
+            _typeRepository.Remove(entity);
         }
 
         public void Update(TypeDTO entity)
