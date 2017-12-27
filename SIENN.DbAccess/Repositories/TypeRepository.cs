@@ -24,7 +24,16 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Update(TypeDTO entity)
         {
-            throw new NotImplementedException();
+            var dto = SiennContext.Type.FirstOrDefault(x => x.TypeId == entity.TypeId);
+            if (dto == null)
+            {
+                throw new Exception($"Type with ID = {entity.TypeId} not found.");
+            }
+
+            dto.Code = entity.Code;
+            dto.Description = entity.Description;
+
+            SiennContext.SaveChanges();
         }
     }
 }

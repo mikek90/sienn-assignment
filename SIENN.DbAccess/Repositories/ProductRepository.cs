@@ -26,7 +26,22 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Update(ProductDTO entity)
         {
-            throw new NotImplementedException();
+            var dto = SiennContext.Product.FirstOrDefault(x => x.ProductId == entity.ProductId);
+            if (dto == null)
+            {
+                throw new Exception($"Product with ID = {entity.ProductId} not found.");
+            }
+
+            dto.Code = entity.Code;
+            dto.Description = entity.Description;
+            dto.DeliveryDate = entity.DeliveryDate;
+            dto.IsAvailable = entity.IsAvailable;
+            dto.Price = entity.Price;
+            dto.TypeId = entity.TypeId;
+            dto.UnitId = entity.UnitId;
+            dto.ProductCategories = entity.ProductCategories;
+
+            SiennContext.SaveChanges();
         }
     }
 }

@@ -24,7 +24,16 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Update(UnitDTO entity)
         {
-            throw new NotImplementedException();
+            var dto = SiennContext.Unit.FirstOrDefault(x => x.UnitId == entity.UnitId);
+            if (dto == null)
+            {
+                throw new Exception($"Unit with ID = {entity.UnitId} not found.");
+            }
+
+            dto.Code = entity.Code;
+            dto.Description = entity.Description;
+
+            SiennContext.SaveChanges();
         }
     }
 }

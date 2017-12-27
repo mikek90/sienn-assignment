@@ -24,7 +24,16 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Update(CategoryDTO entity)
         {
-            throw new NotImplementedException();
+            var dto = SiennContext.Category.FirstOrDefault(x => x.CategoryId == entity.CategoryId);
+            if (dto == null)
+            {
+                throw new Exception($"Category with ID = {entity.CategoryId} not found.");
+            }
+
+            dto.Code = entity.Code;
+            dto.Description = entity.Description;
+
+            SiennContext.SaveChanges();
         }
     }
 }
