@@ -7,26 +7,26 @@ DROP TABLE IF EXISTS [dbo].[Type]
 
 CREATE TABLE [dbo].[Type](
 	[TypeId] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Code] [varchar](20) NOT NULL,
-	[Description] [varchar](255) NULL
+	[Code] [varchar](20) NOT NULL UNIQUE,
+	[Description] [nvarchar](255) NULL
 )
 
 CREATE TABLE [dbo].[Unit](
 	[UnitId] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Code] [varchar](20) NOT NULL,
-	[Description] [varchar](255) NULL
+	[Code] [varchar](20) NOT NULL UNIQUE,
+	[Description] [nvarchar](255) NULL
 )
 
 CREATE TABLE [dbo].[Category](
 	[CategoryId] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Code] [varchar](20) NOT NULL,
-	[Description] [varchar](255) NULL
+	[Code] [varchar](20) NOT NULL UNIQUE,
+	[Description] [nvarchar](255) NULL
 )
 
 CREATE TABLE [dbo].[Product](
 	[ProductId] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Code] [varchar](50) NOT NULL,
-	[Description] [varchar](500) NULL,
+	[Code] [varchar](50) NOT NULL UNIQUE,
+	[Description] [nvarchar](500) NULL,
 	[Price] DECIMAL(19, 4) NOT NULL,
 	[IsAvailable] [bit] NOT NULL DEFAULT 0,
 	[DeliveryDate] [datetime] NULL,
