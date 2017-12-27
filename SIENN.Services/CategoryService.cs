@@ -33,7 +33,7 @@ namespace SIENN.Services
 
         public void Remove(int id)
         {
-            var entity = _categoryRepository.Get(id);
+            var entity = _categoryRepository.GetDetailed(id);
             _categoryRepository.Remove(entity);
         }
 

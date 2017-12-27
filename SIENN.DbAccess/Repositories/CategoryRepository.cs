@@ -13,7 +13,7 @@ namespace SIENN.DbAccess.Repositories
         public CategoryRepository(SiennContext context) : base(context)
         { }
 
-        public override CategoryDTO Get(int id)
+        public override CategoryDTO GetDetailed(int id)
         {
             var result = SiennContext.Category
                 .Include(c => c.ProductCategories)

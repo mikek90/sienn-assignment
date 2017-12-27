@@ -13,7 +13,7 @@ namespace SIENN.DbAccess.Repositories
         public TypeRepository(SiennContext context) : base(context)
         { }
 
-        public TypeDTO GetDetailed(int id)
+        public override TypeDTO GetDetailed(int id)
         {
             var result = SiennContext.Type
                 .Include(p => p.Products)

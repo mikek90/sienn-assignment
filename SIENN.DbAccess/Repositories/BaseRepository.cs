@@ -19,6 +19,7 @@ namespace SIENN.DbAccess.Repositories
         }
 
         public abstract void Update(TEntity entity);
+        public abstract TEntity GetDetailed(int id);
 
         protected SiennContext SiennContext;
     }

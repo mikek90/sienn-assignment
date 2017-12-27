@@ -7,6 +7,5 @@ namespace SIENN.DbAccess.Repositories
 {
     public interface ITypeRepository : IBaseRepository<TypeDTO>
     {
-        TypeDTO GetDetailed(int id);
     }
 }

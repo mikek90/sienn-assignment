@@ -13,7 +13,7 @@ namespace SIENN.DbAccess.Repositories
         public UnitRepository(SiennContext context) : base(context)
         { }
 
-        public UnitDTO GetDetailed(int id)
+        public override UnitDTO GetDetailed(int id)
         {
             var result = SiennContext.Unit
                 .Include(p => p.Products)
