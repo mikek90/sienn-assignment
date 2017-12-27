@@ -7,5 +7,6 @@ namespace SIENN.DbAccess.Repositories
 {
     public interface IUnitRepository : IBaseRepository<UnitDTO>
     {
+        UnitDTO GetDetailed(int id);
     }
 }
