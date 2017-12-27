@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SIENN.VerySimpleIoC
+namespace SIENN.Services
 {
     public class UnitService : IUnitService
     {
@@ -31,8 +31,9 @@ namespace SIENN.VerySimpleIoC
             return _unitRepository.GetAll();
         }
 
-        public void Remove(UnitDTO entity)
+        public void Remove(int id)
         {
+            var entity = _unitRepository.Get(id);
             _unitRepository.Remove(entity);
         }
 

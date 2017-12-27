@@ -22,6 +22,8 @@ namespace SIENN.DbAccess.Context
         {
             modelBuilder.Entity<CategoryDTO>(entity =>
             {
+                entity.ToTable("Category");
+
                 entity.HasKey(e => e.CategoryId);
 
                 entity.HasIndex(e => e.Code)
@@ -38,6 +40,8 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<ProductDTO>(entity =>
             {
+                entity.ToTable("Product");
+
                 entity.HasKey(e => e.ProductId);
 
                 entity.HasIndex(e => e.Code)
@@ -70,23 +74,27 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<ProductCategoryDTO>(entity =>
             {
+                entity.ToTable("ProductCategory");
+
                 entity.HasKey(e => new { e.ProductId, e.CategoryId });
 
                 entity.HasOne(pc => pc.Product)
                     .WithMany(p => p.ProductCategories)
                     .HasForeignKey(pc => pc.ProductId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_ProductCategory_Product");
 
                 entity.HasOne(pc => pc.Category)
                     .WithMany(c => c.ProductCategories)
                     .HasForeignKey(pc => pc.CategoryId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("FK_ProductCategory_Category");
             });
 
             modelBuilder.Entity<TypeDTO>(entity =>
             {
+                entity.ToTable("Type");
+
                 entity.HasKey(e => e.TypeId);
 
                 entity.HasIndex(e => e.Code)
@@ -103,6 +111,8 @@ namespace SIENN.DbAccess.Context
 
             modelBuilder.Entity<UnitDTO>(entity =>
             {
+                entity.ToTable("Unit");
+
                 entity.HasKey(e => e.UnitId);
 
                 entity.HasIndex(e => e.Code)

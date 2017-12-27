@@ -2,7 +2,7 @@
 
 namespace SIENN.BusinessInterfaces
 {
-    public class ProductCategoryDTO
+    public partial class ProductCategoryDTO
     {
         public int ProductId { get; set; }
         public ProductDTO Product { get; set; }

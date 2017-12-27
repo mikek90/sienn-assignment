@@ -16,19 +16,27 @@ namespace SIENN.WebApi.Controllers
 
         public ProductController(IProductService ProductService)
         {
-            this._productService = ProductService;
+            _productService = ProductService;
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_productService.Get(id));
+            var productDto = _productService.Get(id);
+            return Ok(productDto);
         }
 
         [HttpGet("all")]
         public IActionResult GetAll()
         {
             return Ok(_productService.GetAll());
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _productService.Remove(id);
+            return Ok();
         }
     }
 }

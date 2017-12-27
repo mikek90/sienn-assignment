@@ -31,8 +31,9 @@ namespace SIENN.Services
             return _categoryRepository.GetAll();
         }
 
-        public void Remove(CategoryDTO entity)
+        public void Remove(int id)
         {
+            var entity = _categoryRepository.Get(id);
             _categoryRepository.Remove(entity);
         }
 
