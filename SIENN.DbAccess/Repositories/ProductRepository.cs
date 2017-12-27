@@ -26,12 +26,6 @@ namespace SIENN.DbAccess.Repositories
             return result;
         }
 
-        public override void Remove(ProductDTO entity)
-        {
-            _context.Remove(entity);
-            _context.SaveChanges();
-        }
-
         public override void Update(ProductDTO entity)
         {
             throw new NotImplementedException();

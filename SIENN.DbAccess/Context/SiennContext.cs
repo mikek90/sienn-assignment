@@ -81,13 +81,13 @@ namespace SIENN.DbAccess.Context
                 entity.HasOne(pc => pc.Product)
                     .WithMany(p => p.ProductCategories)
                     .HasForeignKey(pc => pc.ProductId)
-                    .OnDelete(DeleteBehavior.Restrict)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ProductCategory_Product");
 
                 entity.HasOne(pc => pc.Category)
                     .WithMany(c => c.ProductCategories)
                     .HasForeignKey(pc => pc.CategoryId)
-                    .OnDelete(DeleteBehavior.Restrict)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_ProductCategory_Category");
             });
 

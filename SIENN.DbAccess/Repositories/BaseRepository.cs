@@ -9,11 +9,17 @@ namespace SIENN.DbAccess.Repositories
     {
         public BaseRepository(SiennContext context) : base(context)
         {
-            _context = context;
+            SiennContext = context;
+        }
+
+        public override void Remove(TEntity entity)
+        {
+            SiennContext.Remove(entity);
+            SiennContext.SaveChanges();
         }
 
         public abstract void Update(TEntity entity);
 
-        private SiennContext _context;
+        SiennContext SiennContext;
     }
 }
