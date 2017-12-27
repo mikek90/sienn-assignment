@@ -25,13 +25,14 @@ namespace SIENN.WebApi.Controllers
         public IActionResult Get(int id)
         {
             var dto = _categoryService.Get(id);
-            return Ok(dto);
+            return Ok(VerySimpleModelMapper.Map(dto));
         }
 
         [HttpGet("all")]
         public IActionResult GetAll()
         {
-            return Ok(_categoryService.GetAll());
+            var colDto = _categoryService.GetAll();
+            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
         }
 
         [HttpPost("create")]
