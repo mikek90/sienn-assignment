@@ -11,9 +11,9 @@ namespace SIENN.Services
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductService(IProductRepository ProductRepository)
+        public ProductService(IProductRepository productRepository)
         {
-            _productRepository = ProductRepository;
+            _productRepository = productRepository;
         }
 
         public void Add(ProductDTO entity)

@@ -17,9 +17,11 @@ namespace SIENN.VerySimpleIoC
 
             // Services
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ITypeService, TypeService>();
+            services.AddScoped<IUnitService, UnitService>();
 
             // Repositories
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ITypeRepository, TypeRepository>();
