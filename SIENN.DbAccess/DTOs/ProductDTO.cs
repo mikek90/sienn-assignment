@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SIENN.DbAccess.DTOs
 {
-    public partial class Product
+    public partial class ProductDTO
     {
         public int ProductId { get; set; }
         public string Code { get; set; }
@@ -14,7 +14,7 @@ namespace SIENN.DbAccess.DTOs
         public int? TypeId { get; set; }
         public int? UnitId { get; set; }
 
-        public Type Type { get; set; }
-        public Unit Unit { get; set; }
+        public TypeDTO Type { get; set; }
+        public UnitDTO Unit { get; set; }
     }
 }

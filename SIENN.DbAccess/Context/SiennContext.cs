@@ -1,30 +1,26 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SIENN.DbAccess.DTOs;
 
-namespace SIENN.DbAccess.DTOs
+namespace SIENN.DbAccess.Context
 {
-    public partial class Sienn1Context : DbContext
+    public partial class SiennContext : DbContext
     {
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Type> Type { get; set; }
-        public virtual DbSet<Unit> Unit { get; set; }
+        public SiennContext(DbContextOptions<SiennContext> options)
+            : base(options)
+        { }
+
+        public virtual DbSet<CategoryDTO> Category { get; set; }
+        public virtual DbSet<ProductDTO> Product { get; set; }
+        public virtual DbSet<TypeDTO> Type { get; set; }
+        public virtual DbSet<UnitDTO> Unit { get; set; }
 
         // Unable to generate entity type for table 'dbo.ProductCategory'. Please see the warning messages.
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=JUSTYNA-PC;Database=Sienn1;User Id=SiennUser;Password=SiennPass;");
-            }
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(entity =>
+            modelBuilder.Entity<CategoryDTO>(entity =>
             {
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Category__A25C5AA79081AE1B")
@@ -38,7 +34,7 @@ namespace SIENN.DbAccess.DTOs
                 entity.Property(e => e.Description).HasMaxLength(255);
             });
 
-            modelBuilder.Entity<Product>(entity =>
+            modelBuilder.Entity<ProductDTO>(entity =>
             {
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Product__A25C5AA7DF7E426C")
@@ -66,7 +62,7 @@ namespace SIENN.DbAccess.DTOs
                     .HasConstraintName("FK_Product_Unit");
             });
 
-            modelBuilder.Entity<Type>(entity =>
+            modelBuilder.Entity<TypeDTO>(entity =>
             {
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Type__A25C5AA777B9DE99")
@@ -80,7 +76,7 @@ namespace SIENN.DbAccess.DTOs
                 entity.Property(e => e.Description).HasMaxLength(255);
             });
 
-            modelBuilder.Entity<Unit>(entity =>
+            modelBuilder.Entity<UnitDTO>(entity =>
             {
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Unit__A25C5AA7BC7EA533")

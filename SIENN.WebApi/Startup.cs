@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.EntityFrameworkCore;
 
 namespace SIENN.WebApi
 {
@@ -25,6 +26,8 @@ namespace SIENN.WebApi
                     Title = "SIENN Recruitment API"
                 });
             });
+
+            SIENN.VerySimpleIoC.ServicesLoader.RegisterComponents(ref services);
 
             services.AddMvc();
         }
