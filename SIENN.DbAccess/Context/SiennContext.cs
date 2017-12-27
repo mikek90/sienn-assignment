@@ -66,6 +66,21 @@ namespace SIENN.DbAccess.Context
                     .HasConstraintName("FK_Product_Unit");
             });
 
+            modelBuilder.Entity<ProductCategoryDTO>(entity =>
+            {
+                entity.HasKey(e => new { e.ProductId, e.CategoryId });
+
+                entity.HasOne(pc => pc.Product)
+                    .WithMany(p => p.ProductCategories)
+                    .HasForeignKey(pc => pc.ProductId)
+                    .HasConstraintName("FK_ProductCategory_Product");
+
+                entity.HasOne(pc => pc.Category)
+                    .WithMany(c => c.ProductCategories)
+                    .HasForeignKey(pc => pc.CategoryId)
+                    .HasConstraintName("FK_ProductCategory_Category");
+            });
+
             modelBuilder.Entity<TypeDTO>(entity =>
             {
                 entity.HasKey(e => e.TypeId);

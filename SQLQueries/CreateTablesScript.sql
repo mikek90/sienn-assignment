@@ -47,6 +47,7 @@ GO
 CREATE TABLE [dbo].[ProductCategory](
 	[ProductId] [int] NOT NULL,
 	[CategoryId] [int] NOT NULL
+	--CONSTRAINT PK_ProductCategory PRIMARY KEY ([ProductId], [CategoryId])
 )
 ALTER TABLE [dbo].[ProductCategory]  WITH CHECK ADD  CONSTRAINT [FK_ProductCategory_Category] FOREIGN KEY([CategoryId])
 REFERENCES [dbo].[Category] ([CategoryId])
