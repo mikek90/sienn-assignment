@@ -13,6 +13,19 @@ namespace SIENN.DbAccess.Repositories
         public ProductRepository(SiennContext context) : base(context)
         { }
 
+        public override void Add(ProductDTO entity)
+        {
+            //base.Add(entity);
+
+            if (entity.ProductId.HasValue)
+            {
+                entity.ProductId = null;
+            }
+
+            SiennContext.Product.Add(entity);
+            SiennContext.SaveChanges();
+        }
+
         public override ProductDTO GetDetailed(int id)
         {
             var result = SiennContext.Product

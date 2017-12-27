@@ -39,7 +39,7 @@ namespace SIENN.Services
 
         public void Update(TypeDTO entity)
         {
-            throw new NotImplementedException();
+            _typeRepository.Update(entity);
         }
     }
 }

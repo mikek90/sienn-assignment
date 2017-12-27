@@ -13,6 +13,17 @@ namespace SIENN.DbAccess.Repositories
         public TypeRepository(SiennContext context) : base(context)
         { }
 
+        public override void Add(TypeDTO entity)
+        {
+            if (entity.TypeId.HasValue)
+            {
+                entity.TypeId = null;
+            }
+
+            SiennContext.Type.Add(entity);
+            SiennContext.SaveChanges();
+        }
+
         public override TypeDTO GetDetailed(int id)
         {
             var result = SiennContext.Type

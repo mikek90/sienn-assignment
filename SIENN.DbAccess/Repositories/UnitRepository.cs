@@ -13,6 +13,17 @@ namespace SIENN.DbAccess.Repositories
         public UnitRepository(SiennContext context) : base(context)
         { }
 
+        public override void Add(UnitDTO entity)
+        {
+            if (entity.UnitId.HasValue)
+            {
+                entity.UnitId = null;
+            }
+
+            SiennContext.Unit.Add(entity);
+            SiennContext.SaveChanges();
+        }
+
         public override UnitDTO GetDetailed(int id)
         {
             var result = SiennContext.Unit

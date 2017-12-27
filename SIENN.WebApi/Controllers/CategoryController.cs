@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SIENN.BusinessInterfaces.Contracts;
+using SIENN.WebApi.Models;
+using SIENN.WebApi.Models.ModelMapper;
 
 namespace SIENN.WebApi.Controllers
 {
@@ -30,6 +32,28 @@ namespace SIENN.WebApi.Controllers
         public IActionResult GetAll()
         {
             return Ok(_categoryService.GetAll());
+        }
+
+        [HttpPost("create")]
+        public IActionResult Create([FromBody]CategoryModel model)
+        {
+            if (model.Id.HasValue)
+            {
+                return BadRequest("Input data should not contain Id.");
+            }
+            _categoryService.Add(VerySimpleModelMapper.Map(model));
+            return Ok();
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update([FromBody]CategoryModel model)
+        {
+            if (!model.Id.HasValue)
+            {
+                return BadRequest("Input data should contain Id.");
+            }
+            _categoryService.Update(VerySimpleModelMapper.Map(model));
+            return Ok();
         }
 
         [HttpDelete("{id}")]

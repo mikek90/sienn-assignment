@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SIENN.BusinessInterfaces.Contracts;
+using SIENN.WebApi.Models;
+using SIENN.WebApi.Models.ModelMapper;
 
 namespace SIENN.WebApi.Controllers
 {
@@ -23,13 +25,36 @@ namespace SIENN.WebApi.Controllers
         public IActionResult Get(int id)
         {
             var dto = _typeService.Get(id);
-            return Ok(dto);
+            return Ok(VerySimpleModelMapper.Map(dto));
         }
 
         [HttpGet("all")]
         public IActionResult GetAll()
         {
-            return Ok(_typeService.GetAll());
+            var colDto = _typeService.GetAll();
+            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+        }
+
+        [HttpPost("create")]
+        public IActionResult Create([FromBody]TypeModel model)
+        {
+            if (model.Id.HasValue)
+            {
+                return BadRequest("Input data should not contain Id.");
+            }
+            _typeService.Add(VerySimpleModelMapper.Map(model));
+            return Ok();
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update([FromBody]TypeModel model)
+        {
+            if (!model.Id.HasValue)
+            {
+                return BadRequest("Input data should contain Id.");
+            }
+            _typeService.Update(VerySimpleModelMapper.Map(model));
+            return Ok();
         }
 
         [HttpDelete("{id}")]

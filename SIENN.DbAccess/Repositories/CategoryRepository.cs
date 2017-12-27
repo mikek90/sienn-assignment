@@ -13,6 +13,17 @@ namespace SIENN.DbAccess.Repositories
         public CategoryRepository(SiennContext context) : base(context)
         { }
 
+        public override void Add(CategoryDTO entity)
+        {
+            if (entity.CategoryId.HasValue)
+            {
+                entity.CategoryId = null;
+            }
+
+            SiennContext.Category.Add(entity);
+            SiennContext.SaveChanges();
+        }
+
         public override CategoryDTO GetDetailed(int id)
         {
             var result = SiennContext.Category

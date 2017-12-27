@@ -39,7 +39,7 @@ namespace SIENN.Services
 
         public void Update(ProductDTO entity)
         {
-            throw new NotImplementedException();
+            _productRepository.Update(entity);
         }
     }
 }
