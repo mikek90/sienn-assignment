@@ -74,6 +74,18 @@ namespace SIENN.WebApi.Models.ModelMapper
             return result;
         }
 
+        public static ProductSearchCriteria Map(ProductSearchRequestModel source)
+        {
+            return new ProductSearchCriteria
+            {
+                ItemsCount = source.ItemsCount,
+                PageNumber = source.PageNumber,
+                CategoryIds = source.CategoryIds,
+                TypeIds = source.TypeIds,
+                UnitIds = source.UnitIds
+            };
+        }
+
         public static CategoryModel Map(CategoryDTO source)
         {
             if (source == null)

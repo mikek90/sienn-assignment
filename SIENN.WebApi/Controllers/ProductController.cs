@@ -64,6 +64,18 @@ namespace SIENN.WebApi.Controllers
             return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
         }
 
+        [HttpGet("search")]
+        public IActionResult Search([FromBody]ProductSearchRequestModel model)
+        {
+            if (ModelState.ErrorCount > 0 || model == null)
+            {
+                return BadRequest();
+            }
+
+            var colDto = _productService.Search(VerySimpleModelMapper.Map(model));
+            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+        }
+
         [HttpPost("create")]
         public IActionResult Create([FromBody]ProductModel model)
         {
