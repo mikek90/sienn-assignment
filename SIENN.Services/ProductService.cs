@@ -31,6 +31,11 @@ namespace SIENN.Services
             return _productRepository.GetAll();
         }
 
+        public ProductDTO GetDetailed(int id)
+        {
+            return _productRepository.GetDetailed(id);
+        }
+
         public void Remove(int id)
         {
             var entity = _productRepository.GetDetailed(id);

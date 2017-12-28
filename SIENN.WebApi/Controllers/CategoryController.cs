@@ -25,6 +25,11 @@ namespace SIENN.WebApi.Controllers
         public IActionResult Get(int id)
         {
             var dto = _categoryService.Get(id);
+            if (dto == null)
+            {
+                return BadRequest();
+            }
+
             return Ok(VerySimpleModelMapper.Map(dto));
         }
 
@@ -38,9 +43,9 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody]CategoryModel model)
         {
-            if (model.Id.HasValue)
+            if (ModelState.ErrorCount > 0 || model == null || model.Id.HasValue)
             {
-                return BadRequest("Input data should not contain Id.");
+                return BadRequest();
             }
             _categoryService.Add(VerySimpleModelMapper.Map(model));
             return Ok();
@@ -49,9 +54,9 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("update")]
         public IActionResult Update([FromBody]CategoryModel model)
         {
-            if (!model.Id.HasValue)
+            if (ModelState.ErrorCount > 0 || model == null || !model.Id.HasValue)
             {
-                return BadRequest("Input data should contain Id.");
+                return BadRequest();
             }
             _categoryService.Update(VerySimpleModelMapper.Map(model));
             return Ok();

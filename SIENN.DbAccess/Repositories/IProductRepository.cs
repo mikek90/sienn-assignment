@@ -7,5 +7,6 @@ namespace SIENN.DbAccess.Repositories
 {
     public interface IProductRepository : IBaseRepository<ProductDTO>
     {
+        //ProductDTO AddProduct(ProductDTO entity);
     }
 }

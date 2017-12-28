@@ -13,6 +13,7 @@ namespace SIENN.DbAccess.Context
 
         public virtual DbSet<CategoryDTO> Category { get; set; }
         public virtual DbSet<ProductDTO> Product { get; set; }
+        public virtual DbSet<ProductCategoryDTO> ProductCategory { get; set; }
         public virtual DbSet<TypeDTO> Type { get; set; }
         public virtual DbSet<UnitDTO> Unit { get; set; }
 
