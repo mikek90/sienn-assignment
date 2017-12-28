@@ -64,11 +64,13 @@ namespace SIENN.WebApi.Controllers
             return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
         }
 
-        [HttpGet("search")]
+        [HttpPost("search")]
         public IActionResult Search([FromBody]ProductSearchRequestModel model)
         {
             if (ModelState.ErrorCount > 0 || model == null)
             {
+                var modelStateErrors = this.ModelState.Values.SelectMany(m => m.Errors);
+
                 return BadRequest();
             }
 

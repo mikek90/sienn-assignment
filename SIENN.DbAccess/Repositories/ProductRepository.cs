@@ -42,23 +42,23 @@ namespace SIENN.DbAccess.Repositories
             int start = criteria.PageNumber > 0 ? criteria.PageNumber - 1 : criteria.PageNumber;
             start = start * criteria.ItemsCount;
 
-            var query = SiennContext.Product.Include(x => x.ProductCategories);
+            var query = SiennContext.Product.Include(x => x.ProductCategories).Where(x => x.ProductId > 0);
 
             if (criteria.IsAvailable.HasValue)
             {
-                query.Where(x => x.IsAvailable == criteria.IsAvailable.Value);
+                query = query.Where(x => x.IsAvailable == criteria.IsAvailable.Value);
             }
             if (criteria.TypeIds != null && criteria.TypeIds.Length > 0 )
             {
-                query.Where(x => criteria.TypeIds.Contains(x.TypeId.Value));
+                query = query.Where(x => criteria.TypeIds.Contains(x.TypeId.Value));
             }
             if (criteria.UnitIds != null && criteria.UnitIds.Length > 0)
             {
-                query.Where(x => criteria.UnitIds.Contains(x.UnitId.Value));
+                query = query.Where(x => criteria.UnitIds.Contains(x.UnitId.Value));
             }
             if (criteria.CategoryIds != null && criteria.CategoryIds.Length > 0)
             {
-                query.Where(x => criteria.CategoryIds.Intersect(x.ProductCategories.Select(s => s.CategoryId).ToArray()).Any());
+                query = query.Where(x => criteria.CategoryIds.Intersect(x.ProductCategories.Select(s => s.CategoryId).ToArray()).Any());
             }
 
             return query.Skip(start).Take(criteria.ItemsCount).ToList();
