@@ -52,6 +52,18 @@ namespace SIENN.WebApi.Controllers
             return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
         }
 
+        [HttpGet("available")]
+        public IActionResult GetAvailable(ProductAvailableRequestModel model)
+        {
+            if (ModelState.ErrorCount > 0 || model == null)
+            {
+                return BadRequest();
+            }
+
+            var colDto = _productService.GetAvailable(model.PageNumber, model.ItemsCount);
+            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+        }
+
         [HttpPost("create")]
         public IActionResult Create([FromBody]ProductModel model)
         {

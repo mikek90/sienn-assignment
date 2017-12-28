@@ -8,5 +8,6 @@ namespace SIENN.DbAccess.Repositories
     public interface IProductRepository : IBaseRepository<ProductDTO>
     {
         //ProductDTO AddProduct(ProductDTO entity);
+        IEnumerable<ProductDTO> Search(ProductSearchCriteria criteria);
     }
 }

@@ -3,6 +3,7 @@ using SIENN.BusinessInterfaces.Contracts;
 using SIENN.DbAccess.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace SIENN.Services
@@ -34,6 +35,21 @@ namespace SIENN.Services
         public ProductDTO GetDetailed(int id)
         {
             return _productRepository.GetDetailed(id);
+        }
+
+        public IEnumerable<ProductDTO> GetAvailable(int pageNo, int itemsCount)
+        {
+            return Search(new ProductSearchCriteria
+            {
+                PageNumber = pageNo,
+                ItemsCount = itemsCount,
+                IsAvailable = true
+            });
+        }
+
+        public IEnumerable<ProductDTO> Search(ProductSearchCriteria criteria)
+        {
+            return _productRepository.Search(criteria ?? ProductSearchCriteria.Empty);
         }
 
         public void Remove(int id)
