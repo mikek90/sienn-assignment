@@ -9,6 +9,27 @@ namespace SIENN.WebApi.Models.ModelMapper
     // TODO: Add AutoMapper or implement more generic version with IoC in future
     public static class VerySimpleModelMapper
     {
+        public static SpecialProductModel MapSpecial(ProductDTO source)
+        {
+            string template = "({0}) {1}";
+
+            if (source == null)
+            {
+                return null;
+            }
+
+            return new SpecialProductModel
+            {
+                CategoriesCount = source.ProductCategories.Count(),
+                DeliveryDate = source.DeliveryDate.HasValue ? source.DeliveryDate.Value.ToString("dd.MM.yyyy") : string.Empty,
+                IsAvailable = source.IsAvailable.Value ? "Dostępny" : "Niedostępny",
+                Price = $"{source.Price.Value:n2} zł",
+                ProductDescription = string.Format(template, source.Code, source.Description),
+                Type = source.Type == null ? string.Empty : string.Format(template, source.Type.Code, source.Type.Description),
+                Unit = source.Unit == null ? string.Empty : string.Format(template, source.Unit.Code, source.Unit.Description)
+            };
+        }
+
         public static ProductModel Map(ProductDTO source)
         {
             if (source == null)

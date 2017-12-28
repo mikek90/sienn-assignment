@@ -33,6 +33,18 @@ namespace SIENN.WebApi.Controllers
             return Ok(VerySimpleModelMapper.Map(dto));
         }
 
+        [HttpGet("special{id}")]
+        public IActionResult GetSpecial(int id)
+        {
+            var dto = _productService.GetDetailed(id); // Get
+            if (dto == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(VerySimpleModelMapper.MapSpecial(dto));
+        }
+
         [HttpGet("all")]
         public IActionResult GetAll()
         {
