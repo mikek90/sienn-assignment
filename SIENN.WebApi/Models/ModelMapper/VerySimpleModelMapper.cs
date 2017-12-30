@@ -39,7 +39,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new ProductModel
             {
-                Id = source.ProductId,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description,
                 DeliveryDate = source.DeliveryDate,
@@ -60,7 +60,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             var result = new ProductDTO
             {
-                ProductId = source.Id,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description,
                 DeliveryDate = source.DeliveryDate,
@@ -95,7 +95,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new CategoryModel
             {
-                Id = source.CategoryId,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };
@@ -110,7 +110,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new CategoryDTO
             {
-                CategoryId = source.Id,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };
@@ -125,7 +125,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new TypeModel
             {
-                Id = source.TypeId,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };
@@ -140,7 +140,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new TypeDTO
             {
-                TypeId = source.Id,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };
@@ -155,7 +155,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new UnitModel
             {
-                Id = source.UnitId,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };
@@ -170,7 +170,7 @@ namespace SIENN.WebApi.Models.ModelMapper
 
             return new UnitDTO
             {
-                UnitId = source.Id,
+                Id = source.Id,
                 Code = source.Code,
                 Description = source.Description
             };

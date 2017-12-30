@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SIENN.BusinessInterfaces.Contracts;
@@ -15,10 +16,12 @@ namespace SIENN.WebApi.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
 
-        public ProductController(IProductService ProductService)
+        public ProductController(IProductService ProductService, IMapper mapper)
         {
             _productService = ProductService;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]

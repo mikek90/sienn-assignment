@@ -8,6 +8,7 @@ using SIENN.DbAccess.Repositories;
 using SIENN.DbAccess.Context;
 using SIENN.BusinessInterfaces.Contracts;
 using SIENN.Services;
+using AutoMapper;
 
 namespace SIENN.WebApi
 {
@@ -33,7 +34,8 @@ namespace SIENN.WebApi
 
             SIENN.VerySimpleIoC.ServicesLoader.RegisterComponents(ref services, Configuration);
 
-            services.AddMvc();
+            services.AddAutoMapper();
+            services.AddMvc()   ;
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -25,7 +25,8 @@ namespace SIENN.DbAccess.Context
             {
                 entity.ToTable("Category");
 
-                entity.HasKey(e => e.CategoryId);
+                entity.HasKey(e => e.Id).HasName("CategoryId");
+                entity.Property(e => e.Id).HasColumnName("CategoryId");
 
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Category__A25C5AA79081AE1B")
@@ -43,7 +44,8 @@ namespace SIENN.DbAccess.Context
             {
                 entity.ToTable("Product");
 
-                entity.HasKey(e => e.ProductId);
+                entity.HasKey(e => e.Id).HasName("ProductId");
+                entity.Property(e => e.Id).HasColumnName("ProductId");
 
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Product__A25C5AA7DF7E426C")
@@ -96,7 +98,8 @@ namespace SIENN.DbAccess.Context
             {
                 entity.ToTable("Type");
 
-                entity.HasKey(e => e.TypeId);
+                entity.HasKey(e => e.Id).HasName("TypeId");
+                entity.Property(e => e.Id).HasColumnName("TypeId");
 
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Type__A25C5AA777B9DE99")
@@ -114,7 +117,8 @@ namespace SIENN.DbAccess.Context
             {
                 entity.ToTable("Unit");
 
-                entity.HasKey(e => e.UnitId);
+                entity.HasKey(e => e.Id).HasName("UnitId");
+                entity.Property(e => e.Id).HasColumnName("UnitId");
 
                 entity.HasIndex(e => e.Code)
                     .HasName("UQ__Unit__A25C5AA7BC7EA533")

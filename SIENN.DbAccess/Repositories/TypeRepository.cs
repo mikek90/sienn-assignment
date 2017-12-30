@@ -15,9 +15,9 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Add(TypeDTO entity)
         {
-            if (entity.TypeId.HasValue)
+            if (entity.Id.HasValue)
             {
-                entity.TypeId = null;
+                entity.Id = null;
             }
 
             SiennContext.Type.Add(entity);
@@ -28,17 +28,17 @@ namespace SIENN.DbAccess.Repositories
         {
             var result = SiennContext.Type
                 .Include(p => p.Products)
-                .FirstOrDefault(s => s.TypeId == id);
+                .FirstOrDefault(s => s.Id == id);
 
             return result;
         }
 
         public override void Update(TypeDTO entity)
         {
-            var dto = SiennContext.Type.FirstOrDefault(x => x.TypeId == entity.TypeId);
+            var dto = SiennContext.Type.FirstOrDefault(x => x.Id == entity.Id);
             if (dto == null)
             {
-                throw new Exception($"Type with ID = {entity.TypeId} not found.");
+                throw new Exception($"Type with ID = {entity.Id} not found.");
             }
 
             dto.Code = entity.Code;

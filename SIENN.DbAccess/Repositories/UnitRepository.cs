@@ -15,9 +15,9 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Add(UnitDTO entity)
         {
-            if (entity.UnitId.HasValue)
+            if (entity.Id.HasValue)
             {
-                entity.UnitId = null;
+                entity.Id = null;
             }
 
             SiennContext.Unit.Add(entity);
@@ -28,17 +28,17 @@ namespace SIENN.DbAccess.Repositories
         {
             var result = SiennContext.Unit
                 .Include(p => p.Products)
-                .FirstOrDefault(s => s.UnitId == id);
+                .FirstOrDefault(s => s.Id == id);
 
             return result;
         }
 
         public override void Update(UnitDTO entity)
         {
-            var dto = SiennContext.Unit.FirstOrDefault(x => x.UnitId == entity.UnitId);
+            var dto = SiennContext.Unit.FirstOrDefault(x => x.Id == entity.Id);
             if (dto == null)
             {
-                throw new Exception($"Unit with ID = {entity.UnitId} not found.");
+                throw new Exception($"Unit with ID = {entity.Id} not found.");
             }
 
             dto.Code = entity.Code;

@@ -17,9 +17,9 @@ namespace SIENN.DbAccess.Repositories
         {
             //base.Add(entity);
 
-            if (entity.ProductId.HasValue)
+            if (entity.Id.HasValue)
             {
-                entity.ProductId = null;
+                entity.Id = null;
             }
 
             SiennContext.Product.Add(entity);
@@ -32,7 +32,7 @@ namespace SIENN.DbAccess.Repositories
                 .Include(u => u.Unit)
                 .Include(t => t.Type)
                 .Include(x => x.ProductCategories)
-                .FirstOrDefault(s => s.ProductId == id);
+                .FirstOrDefault(s => s.Id == id);
 
             return result;
         }
@@ -42,7 +42,7 @@ namespace SIENN.DbAccess.Repositories
             int start = criteria.PageNumber > 0 ? criteria.PageNumber - 1 : criteria.PageNumber;
             start = start * criteria.ItemsCount;
 
-            var query = SiennContext.Product.Include(x => x.ProductCategories).Where(x => x.ProductId > 0);
+            var query = SiennContext.Product.Include(x => x.ProductCategories).Where(x => x.Id > 0);
 
             if (criteria.IsAvailable.HasValue)
             {
@@ -70,18 +70,18 @@ namespace SIENN.DbAccess.Repositories
             {
                 try
                 {
-                    if (!entity.ProductId.HasValue)
+                    if (!entity.Id.HasValue)
                     {
                         throw new Exception($"Entity does not contain Id.");
                     }
 
-                    var dto = SiennContext.Product.FirstOrDefault(x => x.ProductId == entity.ProductId);
+                    var dto = SiennContext.Product.FirstOrDefault(x => x.Id == entity.Id);
                     if (dto == null)
                     {
-                        throw new Exception($"Product with ID = {entity.ProductId} not found.");
+                        throw new Exception($"Product with ID = {entity.Id} not found.");
                     }
 
-                    SiennContext.ProductCategory.RemoveRange(SiennContext.ProductCategory.Where(x => x.ProductId == entity.ProductId));
+                    SiennContext.ProductCategory.RemoveRange(SiennContext.ProductCategory.Where(x => x.ProductId == entity.Id));
                     SiennContext.SaveChanges();
 
                     dto.Code = entity.Code;

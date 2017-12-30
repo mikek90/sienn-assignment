@@ -15,9 +15,9 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Add(CategoryDTO entity)
         {
-            if (entity.CategoryId.HasValue)
+            if (entity.Id.HasValue)
             {
-                entity.CategoryId = null;
+                entity.Id = null;
             }
 
             SiennContext.Category.Add(entity);
@@ -28,17 +28,17 @@ namespace SIENN.DbAccess.Repositories
         {
             var result = SiennContext.Category
                 .Include(c => c.ProductCategories)
-                .FirstOrDefault(x => x.CategoryId == id);
+                .FirstOrDefault(x => x.Id == id);
 
             return result;
         }
 
         public override void Update(CategoryDTO entity)
         {
-            var dto = SiennContext.Category.FirstOrDefault(x => x.CategoryId == entity.CategoryId);
+            var dto = SiennContext.Category.FirstOrDefault(x => x.Id == entity.Id);
             if (dto == null)
             {
-                throw new Exception($"Category with ID = {entity.CategoryId} not found.");
+                throw new Exception($"Category with ID = {entity.Id} not found.");
             }
 
             dto.Code = entity.Code;
