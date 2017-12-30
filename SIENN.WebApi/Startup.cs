@@ -31,7 +31,7 @@ namespace SIENN.WebApi
                 });
             });
 
-            SIENN.VerySimpleIoC.ServicesLoader.RegisterComponents(ref services);
+            SIENN.VerySimpleIoC.ServicesLoader.RegisterComponents(ref services, Configuration);
 
             services.AddMvc();
         }

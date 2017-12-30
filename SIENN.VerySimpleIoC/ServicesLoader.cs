@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SIENN.BusinessInterfaces.Contracts;
 using SIENN.DbAccess.Context;
@@ -10,10 +11,10 @@ namespace SIENN.VerySimpleIoC
 {
     public static class ServicesLoader
     {
-        public static void RegisterComponents(ref IServiceCollection services)
+        public static void RegisterComponents(ref IServiceCollection services, IConfiguration Configuration)
         {
             // TODO: move connection string outside
-            services.AddDbContext<SiennContext>(options => options.UseSqlServer("Server=JUSTYNA-PC;Database=Sienn1;User Id=SiennUser;Password=SiennPass;"));
+            services.AddDbContext<SiennContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SiennDatabase")));
 
             // Services
             services.AddScoped<IProductService, ProductService>();
