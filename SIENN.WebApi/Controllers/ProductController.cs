@@ -55,7 +55,7 @@ namespace SIENN.WebApi.Controllers
         [HttpGet("available")]
         public IActionResult GetAvailable(ProductAvailableRequestModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null)
+            if (!ModelState.IsValid || model == null)
             {
                 return BadRequest();
             }
@@ -67,7 +67,7 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("search")]
         public IActionResult Search([FromBody]ProductSearchRequestModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null)
+            if (!ModelState.IsValid || model == null)
             {
                 var modelStateErrors = this.ModelState.Values.SelectMany(m => m.Errors);
 
@@ -81,7 +81,7 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody]ProductModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null)
+            if (!ModelState.IsValid || model == null)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("update")]
         public IActionResult Update([FromBody]ProductModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null || !model.Id.HasValue)
+            if (!ModelState.IsValid || model == null || !model.Id.HasValue)
             {
                 return BadRequest();
             }
