@@ -14,7 +14,7 @@ namespace SIENN.VerySimpleIoC
         public static void RegisterComponents(ref IServiceCollection services, IConfiguration Configuration)
         {
             // TODO: move connection string outside
-            services.AddDbContext<SiennContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SiennDatabase")));
+            services.AddDbContext<SiennContext>(options => options.UseSqlServer(Configuration["ConnStr"]));
 
             // Services
             services.AddScoped<IProductService, ProductService>();
