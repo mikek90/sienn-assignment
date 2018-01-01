@@ -15,11 +15,9 @@ namespace SIENN.DbAccess.Repositories
 
         public override void Add(ProductDTO entity)
         {
-            //base.Add(entity);
-
             if (entity.Id.HasValue)
             {
-                entity.Id = null;
+                throw new Exception("Id should not be set.");
             }
 
             SiennContext.Product.Add(entity);
@@ -48,7 +46,7 @@ namespace SIENN.DbAccess.Repositories
             {
                 query = query.Where(x => x.IsAvailable == criteria.IsAvailable.Value);
             }
-            if (criteria.TypeIds != null && criteria.TypeIds.Length > 0 )
+            if (criteria.TypeIds != null && criteria.TypeIds.Length > 0)
             {
                 query = query.Where(x => criteria.TypeIds.Contains(x.TypeId.Value));
             }

@@ -46,7 +46,7 @@ namespace SIENN.WebApi.Controllers
                 return BadRequest();
             }
 
-            return Ok(VerySimpleModelMapper.MapSpecial(dto));
+            return Ok(_mapper.Map<ProductDTO, ProductSpecialModel>(dto));
         }
 
         [HttpGet("all")]
@@ -78,7 +78,7 @@ namespace SIENN.WebApi.Controllers
                 return BadRequest();
             }
 
-            var colDto = _productService.Search(VerySimpleModelMapper.Map(model));
+            var colDto = _productService.Search(_mapper.Map<ProductSearchRequestModel, ProductSearchCriteria>(model));
             return Ok(colDto.Select(s => _mapper.Map<ProductDTO, ProductModel>(s)));
         }
 
@@ -89,7 +89,8 @@ namespace SIENN.WebApi.Controllers
             {
                 return BadRequest();
             }
-            _productService.Add(VerySimpleModelMapper.Map(model));
+            var dto = _mapper.Map<ProductEditModel, ProductDTO>(model);
+            _productService.Add(dto);
             return Ok();
         }
 
@@ -100,7 +101,8 @@ namespace SIENN.WebApi.Controllers
             {
                 return BadRequest();
             }
-            _productService.Update(VerySimpleModelMapper.Map(model));
+            var dto = _mapper.Map<ProductEditModel, ProductDTO>(model);
+            _productService.Update(dto);
             return Ok();
         }
 

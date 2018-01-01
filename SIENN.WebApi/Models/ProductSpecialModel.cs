@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SIENN.WebApi.Models
 {
-    public class SpecialProductModel
+    public class ProductSpecialModel
     {
         public string ProductDescription { get; set; }
         public string Price { get; set; }
