@@ -47,22 +47,22 @@ namespace SIENN.WebApi.Controllers
         [HttpPost("create")]
         public IActionResult Create([FromBody]CategoryModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null || model.Id.HasValue)
+            if (!ModelState.IsValid || model == null || model.Id.HasValue)
             {
                 return BadRequest();
             }
-            _categoryService.Add(VerySimpleModelMapper.Map(model));
+            _categoryService.Add(_mapper.Map<CategoryModel, CategoryDTO>(model));
             return Ok();
         }
 
         [HttpPost("update")]
         public IActionResult Update([FromBody]CategoryModel model)
         {
-            if (ModelState.ErrorCount > 0 || model == null || !model.Id.HasValue)
+            if (!ModelState.IsValid || model == null || !model.Id.HasValue)
             {
                 return BadRequest();
             }
-            _categoryService.Update(VerySimpleModelMapper.Map(model));
+            _categoryService.Update(_mapper.Map<CategoryModel, CategoryDTO>(model));
             return Ok();
         }
 
