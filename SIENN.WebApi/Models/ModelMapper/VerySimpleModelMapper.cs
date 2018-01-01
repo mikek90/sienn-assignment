@@ -30,28 +30,7 @@ namespace SIENN.WebApi.Models.ModelMapper
             };
         }
 
-        public static ProductModel Map(ProductDTO source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new ProductModel
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description,
-                DeliveryDate = source.DeliveryDate,
-                IsAvailable = source.IsAvailable,
-                Price = source.Price,
-                TypeId = source.TypeId,
-                UnitId = source.UnitId,
-                CategoryIds = source.ProductCategories?.Select(s => s.CategoryId).ToArray()
-            };
-        }
-
-        public static ProductDTO Map(ProductModel source)
+        public static ProductDTO Map(ProductEditModel source)
         {
             if (source == null)
             {
@@ -83,96 +62,6 @@ namespace SIENN.WebApi.Models.ModelMapper
                 CategoryIds = source.CategoryIds,
                 TypeIds = source.TypeIds,
                 UnitIds = source.UnitIds
-            };
-        }
-
-        public static CategoryModel Map(CategoryDTO source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new CategoryModel
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
-            };
-        }
-
-        public static CategoryDTO Map(CategoryModel source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new CategoryDTO
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
-            };
-        }
-
-        public static TypeModel Map(TypeDTO source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new TypeModel
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
-            };
-        }
-
-        public static TypeDTO Map(TypeModel source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new TypeDTO
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
-            };
-        }
-
-        public static UnitModel Map(UnitDTO source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new UnitModel
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
-            };
-        }
-
-        public static UnitDTO Map(UnitModel source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-
-            return new UnitDTO
-            {
-                Id = source.Id,
-                Code = source.Code,
-                Description = source.Description
             };
         }
     }

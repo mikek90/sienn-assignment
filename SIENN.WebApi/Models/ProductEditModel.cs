@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SIENN.WebApi.Models
 {
-    public class ProductModel : BaseModel
+    public class ProductEditModel : BaseModel
     {
         public decimal? Price { get; set; }
         public bool? IsAvailable { get; set; }
@@ -13,5 +13,6 @@ namespace SIENN.WebApi.Models
 
         public int? UnitId { get; set; }
         public int? TypeId { get; set; }
+        public int[] CategoryIds { get; set; }
     }
 }

@@ -12,11 +12,13 @@ namespace SIENN.WebApi.Models.ModelMapper
         public MappingProfile()
         {
             // DTO to model
+            CreateMap<ProductDTO, ProductModel>();
             CreateMap<CategoryDTO, CategoryModel>();
             CreateMap<UnitDTO, UnitModel>();
             CreateMap<TypeDTO, TypeModel>();
 
             // Model to DTO
+            CreateMap<ProductModel, ProductDTO>();
             CreateMap<CategoryModel, CategoryDTO>();
             CreateMap<UnitModel, UnitDTO>();
             CreateMap<TypeModel, TypeDTO>();

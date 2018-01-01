@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SIENN.BusinessInterfaces;
 using SIENN.BusinessInterfaces.Contracts;
 using SIENN.WebApi.Models;
 using SIENN.WebApi.Models.ModelMapper;
@@ -27,13 +28,13 @@ namespace SIENN.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var dto = _productService.GetDetailed(id); // Get
+            var dto = _productService.Get(id);
             if (dto == null)
             {
                 return BadRequest();
             }
 
-            return Ok(VerySimpleModelMapper.Map(dto));
+            return Ok(_mapper.Map<ProductDTO, ProductModel>(dto));
         }
 
         [HttpGet("special{id}")]
@@ -52,7 +53,7 @@ namespace SIENN.WebApi.Controllers
         public IActionResult GetAll()
         {
             var colDto = _productService.GetAll();
-            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+            return Ok(colDto.Select(s => _mapper.Map<ProductDTO, ProductModel>(s)));
         }
 
         [HttpGet("available")]
@@ -64,7 +65,7 @@ namespace SIENN.WebApi.Controllers
             }
 
             var colDto = _productService.GetAvailable(model.PageNumber, model.ItemsCount);
-            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+            return Ok(colDto.Select(s => _mapper.Map<ProductDTO, ProductModel>(s)));
         }
 
         [HttpPost("search")]
@@ -78,11 +79,11 @@ namespace SIENN.WebApi.Controllers
             }
 
             var colDto = _productService.Search(VerySimpleModelMapper.Map(model));
-            return Ok(colDto.Select(s => VerySimpleModelMapper.Map(s)));
+            return Ok(colDto.Select(s => _mapper.Map<ProductDTO, ProductModel>(s)));
         }
 
         [HttpPost("create")]
-        public IActionResult Create([FromBody]ProductModel model)
+        public IActionResult Create([FromBody]ProductEditModel model)
         {
             if (!ModelState.IsValid || model == null)
             {
@@ -93,7 +94,7 @@ namespace SIENN.WebApi.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update([FromBody]ProductModel model)
+        public IActionResult Update([FromBody]ProductEditModel model)
         {
             if (!ModelState.IsValid || model == null || !model.Id.HasValue)
             {
